@@ -1,0 +1,10 @@
+---
+- hosts: all
+  roles:
+  - tar 
+  - ssh_server
+  - sql_server
+  - http_server
+  - firewall
+  - selinux
+  - pwnme

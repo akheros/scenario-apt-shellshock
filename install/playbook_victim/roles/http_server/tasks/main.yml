@@ -1,0 +1,23 @@
+---
+- name: ensure php is at the latest version
+  yum: name=php state=latest
+
+- name: ensure php-mysqlnd is at the latest version
+  yum: name=php-mysqlnd state=latest
+
+- name: ensure httpd is at the latest version
+  yum: name=httpd state=latest
+
+- name: deploy httpd vulnerable CGI script
+  copy: src=shell.sh dest=/var/www/cgi-bin/shell.sh owner=root mode=0755
+  notify:
+  - restart httpd
+
+- name: deploy demo website
+  unarchive: src=sql_web.tar dest=/var/www/html/ owner=root group=root
+  notify:
+  - restart httpd
+
+- name: ensure httpd is enabled and started
+  service: name=httpd enabled=yes state=started
+

@@ -1,0 +1,30 @@
+---
+- name: ensure mariadb is at the latest version
+  yum: name=mariadb state=latest
+
+- name: ensure mariadb-server is at the latest version
+  yum: name=mariadb-server state=latest
+
+- name: ensure MySQL-python is at the latest version
+  yum: name=MySQL-python state=latest
+
+- name: ensure mariadb is enabled and started
+  service: name=mariadb enabled=yes state=started
+
+- name: clean database
+  mysql_db: name=sqlinjection state=absent
+
+- name: create database
+  mysql_db: name=sqlinjection state=present
+
+- name: copy database tables
+  copy: src=create_tables.sql dest=/tmp
+
+- name: copy database data
+  copy: src=insert_data.sql dest=/tmp
+
+- name: import tables
+  mysql_db: state=import name=sqlinjection target=/tmp/create_tables.sql
+
+- name: import data
+  mysql_db: state=import name=sqlinjection target=/tmp/insert_data.sql

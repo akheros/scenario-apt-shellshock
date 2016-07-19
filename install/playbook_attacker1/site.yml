@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+  - tar
+  - socat
+  - http_server
+  - firewall
+  - locust
+  - pupy_rat

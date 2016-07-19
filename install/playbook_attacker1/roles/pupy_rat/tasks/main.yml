@@ -1,0 +1,22 @@
+---
+- name: install pycrypto
+  pip: name=pycrypto state=latest
+
+- name: install pefile
+  pip: name=pefile state=latest
+
+- name: install rpyc
+  pip: name=rpyc state=latest
+
+- name: install pyyaml
+  pip: name=pyyaml state=latest
+
+- name:  ensure firewall allows incoming http
+  firewalld: port=443/tcp state=enabled permanent=true immediate=true
+
+# Copy pupy rat directory
+- name: create dir for source files
+  file: path=/root/pupy state=directory mode=0755
+
+- name: copy pupy rat in root
+  unarchive: src=pupy.tar.gz dest=/root/pupy owner=root group=root

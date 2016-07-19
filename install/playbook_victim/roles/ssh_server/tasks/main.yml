@@ -1,0 +1,13 @@
+---
+- name: ensure sshd is at the latest version
+  yum: name=openssh state=latest
+  notify:
+  - restart ssh
+
+- name: deploy sshd configuration file
+  copy: src=sshd_config dest=/etc/ssh/sshd_config owner=root mode=0444
+  notify:
+  - restart ssh
+
+- name: ensure sshd is enabled and started
+  service: name=sshd enabled=yes state=started

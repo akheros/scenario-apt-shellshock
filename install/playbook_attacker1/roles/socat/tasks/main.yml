@@ -1,0 +1,4 @@
+---
+- name: ensure socat is at the latest version
+  yum: name=socat state=latest
+
