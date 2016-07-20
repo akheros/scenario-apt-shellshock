@@ -1,9 +1,14 @@
 ---
 - hosts: all
+  remote_user: vagrant
+  become: yes
+  become_user: root
+  become_method: sudo
   roles:
+  - libselinux
   - tar
   - socat
   - http_server
-  - firewall
+  - irc_server
   - locust
   - pupy_rat

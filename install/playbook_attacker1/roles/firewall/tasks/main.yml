@@ -1,5 +1,0 @@
-- name: ensure firewall allows incoming http
-  firewalld: service=http permanent=true immediate=true state=enabled
-
-- name: ensure firewall allows incoming http
-  firewalld: service=http permanent=true immediate=true state=enabled

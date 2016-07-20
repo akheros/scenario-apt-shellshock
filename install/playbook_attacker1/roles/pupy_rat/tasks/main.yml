@@ -11,12 +11,8 @@
 - name: install pyyaml
   pip: name=pyyaml state=latest
 
-- name:  ensure firewall allows incoming http
-  firewalld: port=443/tcp state=enabled permanent=true immediate=true
-
-# Copy pupy rat directory
 - name: create dir for source files
-  file: path=/root/pupy state=directory mode=0755
+  file: path=/home/vagrant/pupy state=directory mode=0755 owner=vagrant group=vagrant
 
-- name: copy pupy rat in root
-  unarchive: src=pupy.tar.gz dest=/root/pupy owner=root group=root
+- name: copy pupy rat
+  unarchive: src=pupy.tar.gz dest=/home/vagrant/pupy owner=vagrant group=vagrant

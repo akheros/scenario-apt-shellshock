@@ -1,0 +1,12 @@
+---
+- name: ensure ngircd is installed
+  yum: name=ngircd state=latest
+
+- name: deploy ngircd conf
+  copy: src=ngircd.conf dest=/etc/ngircd.conf owner=root mode=0755
+  notify:
+  - restart ngircd
+
+- name: ensure ngircd is enabled and started
+  service: name=ngircd enabled=yes state=started
+
