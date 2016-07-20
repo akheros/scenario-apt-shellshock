@@ -1,13 +1,10 @@
 ---
 - name: copy source
-  copy: src=pwnme.c dest=/root/pwnme.c owner=root mode=0644
+  copy: src=pwnme.c dest=/home/vagrant/pwnme.c owner=vagrant group=vagrant mode=0644
 
 - name: compile pwnme
-  shell: gcc -o /bin/pwnme /root/pwnme.c
+  shell: gcc -o /bin/pwnme /home/vagrant/pwnme.c
 
 - name: set sticky bit
   file: path=/bin/pwnme mode="u+s,g+s"
-
-- name: open port
-  firewalld: port=31337/tcp state=enabled permanent=true immediate=true
 
