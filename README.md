@@ -12,7 +12,7 @@ and the victim can be installed using `ansible`. The playbooks are in the
 VMs. Vagrant inserts ssh keys; to use them call ansible like so:
 
 ```shell
-$ ansible-playbook -i inventory site.yml --private-key ../../.vagrant/machines/attacker1/virtualbox/private_key
+$ ansible-playbook -i inventory site.yml --private-key ~/.vagrant/machines/attacker1/virtualbox/private_key
 ```
 
 
